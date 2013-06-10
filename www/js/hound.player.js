@@ -1,16 +1,17 @@
 hound.player={
     loadApp:function(){
-        $("#appName").val();
-        $("#servidor").val();
+        $.mobile.showPageLoadingMsg("a", "Descargando Actualizaciones",false);
         $.ajax($("#servidor").val()+"/HoundConnector/rs/"+$("#appName").val()+"/versiones")
         .done(function() {
             localStorage.setItem("appName",$("#appName").val());
             localStorage.setItem("server",$("#servidor").val());
-            window.location = "loading.html";
+            $.mobile.hidePageLoadingMsg();
+            window.location = "loading.html";            
         })
-        .fail(function() {
-            alert("error");
-        })
+        .fail(function(jqXHR, textStatus) {
+            $.mobile.hidePageLoadingMsg();
+            alert( "No se pudo descargar la aplicacion, favor de verificar los datos:" + textStatus );
+        });
     },
     setConf: function(){
         hound.config.appName = localStorage.getItem("appName");
