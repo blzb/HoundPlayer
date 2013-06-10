@@ -7,7 +7,6 @@
         <link rel="stylesheet" href="css/hound.css" />
         <link rel="stylesheet" href="css/extra.css" />
         <script src="phonegap.js"></script>
-        <script src="js/PushNotification.js"></script>   
         <script src="js-lib/jquery.js"></script>
         <script src="js-lib/jquery.mobile.js"></script>
         <script src="js/hound.common.js"></script>
@@ -16,6 +15,7 @@
         <script src="js/hound.display.js"></script>	        
         <script src="js/hound.push.js"></script>
         <script src="js-lib/jquery.validate.js"></script>
+        <script src="js/hound.player.js"></script>
         <style type="text/css" id="jqueryStyle">
         </style>
     </head>
@@ -24,77 +24,15 @@
         <div data-role="page" data-theme="a" id="pagina">
 
             <div data-role="content" >
-                <center id = "mensajes" style="height: 9.5em; overflow-y: visible;"></center>
-                <div style="text-align: center; display: none;" id="notLogged">
-                    <a href="#login" data-inline="true" data-rel="dialog" data-role="button">Login</a>
-                    <a href="#registro" data-inline="true" data-rel="dialog" data-role="button">Registro</a>
-                </div>
-                <div id ="botonRecarga" style="display: none;">
-                    <center>
-                        <a href="" onclick="initApp();" data-role="button" data-icon="refresh" style="width: 50%;">Recargar Aplicacion</a>
-                    </center>
-                </div>
-                <br/>
-                <div class="progress-bar">
-                    <span id="progress-value" style="width: 2%; text-align: center; font-weight: bold;"></span>
-                </div>
+                Aplicacion:<input id="appName"/>
+                Servidor: <input id ="servidor"/>
+                <a href="" onclick="hound.player.loadApp();" data-role="button" data-icon="refresh" >Descargar Aplicacion</a>
             </div><!-- /content -->
 
 
         </div><!-- /page -->
         
-        <script type="text/javascript">
-            //$("#progress-value").width("100%");
-            /*$(document).ready(function () {
-                initApp();
-            });*/
-            if(hound.isLogged()){
-                $("#notLogged").hide();
-            }
-            document.addEventListener("deviceready", initApp, false);
-           
-            function initApp(){                  
-                console.log("first on device ready");                                
-                if(window.requestFileSystem){
-                    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFileSystemSuccess, fail);
-                }
-                $("#mensajes").empty();
-                $("#botonRecarga").hide();
-                //$.mobile.showPageLoadingMsg("a","Descargando Actualizaciones",false);
-                //hound.showModal();
-                hound.pushRegistration();
-                if(hound.isConnected()){
-                    hound.updateApp();
-                }else{
-                    hound.updateCompleted();                    
-                }
-            }
-            function onFileSystemSuccess(fileSystem) {
-                console.log("FILE SYSTEM OBTAINERD");
-                fileSystem.root.getDirectory("hound", {create: true, exclusive: false}, 
-                function(dir){
-                    console.log("DIRECTORY OBTAINED HOUND");
-                    hound.baseDirectory = dir;
-                    fileSystem.root.getDirectory(dir.name+"/tmp", {create: true, exclusive: false},
-                    function(tmpDir){
-                        console.log("DIRECTORY OBTAINED TMP");
-                        hound.tmpDirectory=tmpDir;
-                    }
-                    , 
-                    function(error){
-                        log("Error creating directory:"+JSON.stringify(error));
-                    }
-                );
-                }, 
-                function(error){
-                    log("Error creating directory:"+JSON.stringify(error));
-                }
-            );
-            }
-            function fail(evt){
-                console.log(JSON.stringify(evt));
-            }
-            initApp();
+        <script type="text/javascript">           
         </script>
 
     </body>

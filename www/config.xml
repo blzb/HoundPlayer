@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <widget xmlns     = 'http://www.w3.org/ns/widgets'
         xmlns:gap = 'http://phonegap.com/ns/1.0'
-        id        = "com.lucasian.mobile"
+        id        = "com.lucasian.hound.player"
         version   = "0.0.1">
-    <name>Lucasian Labs Mobile</name>
+    <name>Hound Player</name>
 
     <description>
-        Lucasian Labs Mexico mobile App
+        Hound Mobile Player
     </description>
 
     <author href="http://www.lucasianmexico.com" email="contacto@lucasianmexico.com">
