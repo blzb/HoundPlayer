@@ -5,7 +5,7 @@ hound.player={
         $.ajax($("#servidor").val()+"/HoundConnector/rs/"+$("#appName").val()+"/versiones")
         .done(function() {
             localStorage.setItem("appName",$("#appName").val());
-            localStorage.getItem("server",$("#servidor").val());
+            localStorage.setItem("server",$("#servidor").val());
             window.location = "loading.html";
         })
         .fail(function() {
