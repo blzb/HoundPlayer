@@ -21,19 +21,17 @@
     </head>
     <body>
 
-        <div data-role="page" data-theme="a" id="pagina">
+        <div data-role="dialog" role="dialog">
 
             <div data-role="content" >
-                Aplicacion:<input id="appName"/>
-                Servidor: <input id ="servidor"/>
+                <p>Introduce el nombre de aplicacion que deseas probar:</p>
+                <input id="appName"/>
+                <br/>
                 <a href="" onclick="hound.player.loadApp();" data-role="button" data-icon="refresh" >Descargar Aplicacion</a>
-            </div><!-- /content -->
-
-
-        </div><!-- /page -->
-        
-        <script type="text/javascript">           
-        </script>
-
+            </div>
+            <script type="text/javascript">
+                hound.player.loadValues();
+            </script>
+        </div>        
     </body>
 </html>
