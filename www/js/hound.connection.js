@@ -66,7 +66,7 @@ hound.enviarComentario = function (intentos) {
         comentarioJSON.comentario = $("#comentarioComentario").val();
         $.ajax({
             type: "POST",
-            url: this.config.remote_server
+            url: hound.config.remote_server
                 + hound.nuevas_versiones.comentarioHref,
             data: JSON.stringify(comentarioJSON),
             contentType: "application/json",
@@ -89,7 +89,7 @@ hound.updateApp = function (intentos) {
     }
     $.ajax({
         type: "GET",
-        url: this.config.remote_server + this.config.appName
+        url: hound.config.remote_server + hound.config.appName
             + "/versiones",
         cache: false,
         dataType: "text",
@@ -160,7 +160,7 @@ hound.getContactos = function (intentos) {
     hound.infoLog("Obteniendo nuevos contactos..");
     $.ajax({
         type: "GET",
-        url: this.config.remote_server
+        url: hound.config.remote_server
             + hound.nuevas_versiones.contactosHref,
         cache: false,
         dataType: "text",
@@ -240,7 +240,7 @@ hound.getPortada = function (intentos) {
     hound.infoLog("Obteniendo menu principal..");
     $.ajax({
         type: "GET",
-        url: this.config.remote_server
+        url: hound.config.remote_server
             + hound.nuevas_versiones.portadaHref,
         cache: false,
         dataType: "text",
@@ -279,7 +279,7 @@ hound.getPromociones = function (intentos) {
     hound.infoLog("Obteniendo promociones..");
     $.ajax({
         type: "GET",
-        url: this.config.remote_server
+        url: hound.config.remote_server
             + hound.nuevas_versiones.promocionesHref,
         cache: false,
         dataType: "text",
@@ -355,7 +355,7 @@ hound.getTema = function (intentos) {
     $
         .ajax({
             type: "GET",
-            url: this.config.remote_server_files
+            url: hound.config.remote_server_files
                 + hound.nuevas_versiones.temaHref,
             cache: false,
             dataType: "text",
@@ -380,7 +380,7 @@ hound.getTiendas = function (intentos) {
     hound.infoLog("Obteniendo tiendas..");
     $.ajax({
         type: "GET",
-        url: this.config.remote_server
+        url: hound.config.remote_server
             + hound.nuevas_versiones.tiendasHref,
         cache: false,
         dataType: "text",
@@ -408,7 +408,7 @@ hound.getCategorias = function (elemento) {
     //$("#contenidoCatalogo").hide();
     $.ajax({
         type: "GET",
-        url: this.config.remote_server
+        url: hound.config.remote_server
             + hound.nuevas_versiones.categoriasHref,
         cache: false,
         dataType: "text",
@@ -435,7 +435,7 @@ hound.getArticulos = function (idCategoria) {
     $(".tituloArticulos").html(hound.categorias[idCategoria].nombre);
     $.ajax({
         type: "GET",
-        url: this.config.remote_server
+        url: hound.config.remote_server
             + hound.categorias[idCategoria].articulosHref,
         cache: false,
         dataType: "text",
@@ -462,7 +462,7 @@ hound.getArticulo = function (idArticulo) {
     //$("#contenidoArticulo").hide();
     $.ajax({
         type: "GET",
-        url: this.config.remote_server
+        url: hound.config.remote_server
             + hound.articulos[idArticulo].href,
         cache: false,
         dataType: "text",
@@ -511,7 +511,7 @@ hound.getEncuestas = function (elemento) {
     //$("#listEncuestas").hide();
     $.ajax({
         type: "GET",
-        url: this.config.remote_server
+        url: hound.config.remote_server
             + hound.nuevas_versiones.encuestasHref,
         cache: false,
         dataType: "text",
@@ -539,7 +539,7 @@ hound.getEncuesta = function (idEncuesta) {
     //$("#contenidoEncuesta").hide();
     $.ajax({
         type: "GET",
-        url: this.config.remote_server
+        url: hound.config.remote_server
             + hound.encuestas[idEncuesta].preguntasHref,
         cache: false,
         dataType: "text",
@@ -580,7 +580,7 @@ hound.enviarEncuesta = function () {
     }
     $.ajax({
         type: "POST",
-        url: this.config.remote_server
+        url: hound.config.remote_server
             + hound.encuesta.postHref,
         data: JSON.stringify(encuestaJSON),
         contentType: "application/json",

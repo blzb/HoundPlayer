@@ -18,9 +18,12 @@ hound.player={
         });
     },
     setConf: function(){
-        hound.config.appName = localStorage.getItem("appName");
+        hound.config.appName = localStorage.getItem("appName");        
         hound.config.remote_server = localStorage.getItem("server")+"/HoundConnector/rs/";
         hound.config.remote_server_files = localStorage.getItem("server")+"/HoundConnector/resources/";
+        console.log(hound.config.appName);
+        console.log(hound.config.remote_server);
+        console.log(hound.config.remote_server_files);
     },
     loadValues: function(){
         if(localStorage.getItem("appName")){
