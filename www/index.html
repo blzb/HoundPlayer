@@ -24,10 +24,11 @@
         <div data-role="dialog" role="dialog">
 
             <div data-role="content" >
-                <p>Introduce el nombre de aplicacion que deseas probar:</p>
-                <input id="appName"/>
+                <input id="user" placeholder="usuario"/>
                 <br/>
-                <a href="" onclick="hound.player.loadApp();" data-role="button" data-icon="refresh" >Descargar Aplicacion</a>
+                <input id="password" placeholder="password"/>
+                <br/>
+                <a href="" onclick="hound.player.login();" data-role="button" data-icon="refresh" >Entrar</a>
             </div>
             <script type="text/javascript">
                 localStorage.clear();

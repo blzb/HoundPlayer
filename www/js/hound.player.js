@@ -1,20 +1,20 @@
 hound.player={
-    loadApp:function(){
-        var servidor = "http://server-hound.rhcloud.com";
+    loadApp:function(appName){
+        var servidor = "http://localhost:8280";
         if(servidor.indexOf("http://")==-1){
             servidor = "http://"+servidor;
         }
         $.mobile.showPageLoadingMsg("a", "Descargando Actualizaciones",false);
-        $.ajax(servidor+"/HoundConnector/rs/"+$("#appName").val()+"/versiones")
+        $.ajax(servidor+"/HoundConnector/rs/"+appName+"/versiones")
         .done(function() {
-            localStorage.setItem("appName",$("#appName").val());
+            localStorage.setItem("appName",appName);
             localStorage.setItem("server",servidor);
             $.mobile.hidePageLoadingMsg();
             window.location = "loading.html";            
         })
         .fail(function(jqXHR, textStatus) {
             $.mobile.hidePageLoadingMsg();
-            alert( "No se pudo descargar la aplicacion, favor de verificar los datos:" + textStatus );
+            hound.errorAlert( "No se pudo descargar la aplicacion, favor de verificar los datos:" + textStatus );
         });
     },
     setConf: function(){
@@ -32,5 +32,31 @@ hound.player={
         if(localStorage.getItem("server")){
             $("#servidor").val(localStorage.getItem("server"));
         }
+    },
+    login : function(){
+        var servidor = "http://localhost:8280";
+        if(servidor.indexOf("http://")==-1){
+            servidor = "http://"+servidor;
+        }
+        $.mobile.showPageLoadingMsg("a", "Descargando Actualizaciones",false);
+        var login = {email:$("#user").val(), password:$("#password").val()};        
+        $.ajax({
+            url:servidor+"/HoundConnector/rs/login", 
+            type:'POST',
+            contentType: "application/json",
+            data:JSON.stringify(login)})
+        .done(function( value) {
+            hound.player.loadApp(value[0]);
+/*            
+            localStorage.setItem("appName",$("#appName").val());
+            localStorage.setItem("server",servidor);
+            $.mobile.hidePageLoadingMsg();
+            window.location = "loading.html";            
+            */
+        })
+        .fail(function(jqXHR, textStatus) {
+            $.mobile.hidePageLoadingMsg();
+            hound.errorAlert( "LOGIN INCORRECTO VERIFICA TUS CREDENCIALES");
+        });
     }
 }
