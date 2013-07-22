@@ -1,6 +1,6 @@
 hound.player={
     loadApp:function(appName){
-        var servidor = "http://localhost:8280";
+        var servidor = "http://server-hound.rhcloud.com";
         if(servidor.indexOf("http://")==-1){
             servidor = "http://"+servidor;
         }
@@ -34,7 +34,8 @@ hound.player={
         }
     },
     login : function(){
-        var servidor = "http://localhost:8280";
+        //alert("login");
+        var servidor = "http://server-hound.rhcloud.com";
         if(servidor.indexOf("http://")==-1){
             servidor = "http://"+servidor;
         }
@@ -46,6 +47,7 @@ hound.player={
             contentType: "application/json",
             data:JSON.stringify(login)})
         .done(function( value) {
+            //alert(value[0]);
             hound.player.loadApp(value[0]);
 /*            
             localStorage.setItem("appName",$("#appName").val());
