@@ -7,8 +7,8 @@ hound.config={
     //remote_server_files:"http://localhost/hound/",
     //remote_server:"http://lucasian.dnsd.me:8081/HoundConnector/rs/",
     //remote_server_files:"http://lucasian.dnsd.me:8080/hound/",    
-    //remote_server:"http://server-hound.rhcloud.com/HoundConnector/rs/",
-    //remote_server_files:"http://server-hound.rhcloud.com/HoundConnector/resources/",
+    remote_server:"http://server-hound.rhcloud.com/HoundConnector/rs/",
+    remote_server_files:"http://server-hound.rhcloud.com/HoundConnector/resources/",
     debug: false,
     senderId: "157854791681"
 }
